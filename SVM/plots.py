@@ -3,7 +3,8 @@ import matplotlib.colors
 from SVM.kernels import *
 from SVM.norms import *
 from utils.plot import fig2img
-from utils.data import generate_2D
+from utils.data import generate_2D, generate_standard_moons
+import gradio as gr
 
 norm_dict = {
     'manhattan': ManhattanNorm(),
@@ -17,7 +18,7 @@ kernel_dict = {
     'gaussian': GaussianKernel()
 }
 
-def plot_norm_kernel_2d(X, norm: Norm, kernel: Kernel, log_scale=False):
+def plot_norm_kernel_2d(X, norm, kernel, log_scale=False):
     distances = norm(X)
     K = kernel(distances)
     plt.scatter(
@@ -37,3 +38,11 @@ def plot_kernel(kernel, norm, log_scale):
     kernel = kernel_dict[kernel]
     plot_norm_kernel_2d(X_2D, norm, kernel, log_scale=log_scale)
     return fig2img()
+
+def plot_SVM(C, kernel, norm, progress=gr.Progress()):
+    X, y = generate_standard_moons()
+    if kernel == 'none':
+        svm = SVM(2)
+    else:
+        svm = KernelSVM(2, 2, kernel_dict[kernel], norm_dict[norm])
+    return train_svm(SVM, X, y, progress, C=C)
