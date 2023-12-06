@@ -6,6 +6,7 @@ import torch
 import matplotlib.pyplot as plt
 from utils.plot import fig2img
 from utils.data import device
+from sklearn.metrics import accuracy_score
 
 def plot_points_with_labels(svm, x, y_true, y_pred):
     y_pred = np.sign(y_pred)
@@ -29,6 +30,7 @@ def plot_points_with_labels(svm, x, y_true, y_pred):
     plt.xlim(X_min, X_max)
     plt.ylim(y_min, y_max)
     plt.gca().set_aspect('equal', adjustable='box')
+    plt.title(f'Accuracy: {accuracy_score(y_true, y_pred):.2f}')
 
 def train_svm(svm, X, y, progress, epochs=200, lr=0.01, C=1.0):
     loader = DataLoader(list(zip(X, y)), batch_size=128, shuffle=True)
