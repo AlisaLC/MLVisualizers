@@ -5,8 +5,7 @@ import numpy as np
 import torch
 import matplotlib.pyplot as plt
 from utils.plot import fig2img
-
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+from utils.data import device
 
 def plot_points_with_labels(svm, x, y_true, y_pred):
     c = np.where(y_true == 1.0, 'g', 'b')

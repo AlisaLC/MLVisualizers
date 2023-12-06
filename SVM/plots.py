@@ -7,6 +7,7 @@ from utils.plot import fig2img
 from utils.data import generate_2D, generate_standard_moons
 import gradio as gr
 from SVM.train import train_svm
+from utils.data import device
 
 norm_dict = {
     'manhattan': ManhattanNorm(),
@@ -44,7 +45,7 @@ def plot_kernel(kernel, norm, log_scale):
 def plot_SVM(C, kernel, norm, progress=gr.Progress()):
     X, y = generate_standard_moons()
     if kernel == 'none':
-        svm = SVM(2)
+        svm = SVM(2).to(device)
     else:
-        svm = KernelSVM(2, 1, kernel_dict[kernel], norm_dict[norm])
+        svm = KernelSVM(2, 1, kernel_dict[kernel], norm_dict[norm]).to(device)
     return train_svm(svm, X, y, progress, C=C)

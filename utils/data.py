@@ -2,6 +2,8 @@ import torch
 from sklearn.datasets import make_moons
 from sklearn.preprocessing import StandardScaler
 
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
 def generate_1D(X_range, points=100):
     return torch.linspace(X_range[0], X_range[1], points).view(-1, 1)
 
