@@ -16,6 +16,7 @@ demo_svm = gr.Interface(
         gr.Slider(),
         gr.Dropdown(['none', 'linear', 'quadratic', 'gaussian'], value='none'),
         gr.Dropdown(['manhattan', 'euclidean', 'maximum'], value='euclidean'),
+        gr.Slider(minimum=1, maximum=500, step=1, default=100),
     ],
     outputs=["image"],
 )

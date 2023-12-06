@@ -42,10 +42,10 @@ def plot_kernel(kernel, norm, log_scale):
     plot_norm_kernel_2d(X_2D, norm, kernel, log_scale=log_scale)
     return fig2img()
 
-def plot_SVM(C, kernel, norm, progress=gr.Progress()):
+def plot_SVM(C, kernel, norm, hidden_dim, progress=gr.Progress()):
     X, y = generate_standard_moons()
     if kernel == 'none':
         svm = SVM(2).to(device)
     else:
-        svm = KernelSVM(2, 1, kernel_dict[kernel], norm_dict[norm]).to(device)
+        svm = KernelSVM(2, hidden_dim, kernel_dict[kernel], norm_dict[norm]).to(device)
     return train_svm(svm, X, y, progress, C=C)

@@ -8,6 +8,7 @@ from utils.plot import fig2img
 from utils.data import device
 
 def plot_points_with_labels(svm, x, y_true, y_pred):
+    y_pred = np.sign(y_pred)
     c = np.where(y_true == 1.0, 'g', 'b')
     c = np.where(y_pred == y_true, c, 'r')
     plt.scatter(x[:, 0], x[:, 1], c=c)
