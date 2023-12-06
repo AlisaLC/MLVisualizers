@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors
 from SVM.kernels import *
 from SVM.norms import *
+from SVM.SVM import SVM, KernelSVM
 from utils.plot import fig2img
 from utils.data import generate_2D, generate_standard_moons
 import gradio as gr
@@ -44,5 +45,5 @@ def plot_SVM(C, kernel, norm, progress=gr.Progress()):
     if kernel == 'none':
         svm = SVM(2)
     else:
-        svm = KernelSVM(2, 2, kernel_dict[kernel], norm_dict[norm])
+        svm = KernelSVM(2, 1, kernel_dict[kernel], norm_dict[norm])
     return train_svm(SVM, X, y, progress, C=C)
