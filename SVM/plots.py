@@ -47,5 +47,5 @@ def plot_SVM(C, kernel, norm, hidden_dim, progress=gr.Progress()):
     if kernel == 'none':
         svm = SVM(2).to(device)
     else:
-        svm = KernelSVM(2, hidden_dim, kernel_dict[kernel], norm_dict[norm]).to(device)
+        svm = KernelSVM(2, int(hidden_dim), kernel_dict[kernel], norm_dict[norm]).to(device)
     return train_svm(svm, X, y, progress, C=C)
