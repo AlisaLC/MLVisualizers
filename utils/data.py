@@ -1,3 +1,5 @@
+import torch
+
 def generate_1D(X_range, points=100):
     return torch.linspace(X_range[0], X_range[1], points).view(-1, 1)
 
