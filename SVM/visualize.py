@@ -13,7 +13,7 @@ demo_kernel = gr.Interface(
 demo_svm = gr.Interface(
     fn=plot_SVM,
     inputs=[
-        gr.Slider(),
+        gr.Slider(0.01, 10.0, 1.0, step=0.01),
         gr.Dropdown(['none', 'linear', 'quadratic', 'gaussian'], value='none'),
         gr.Dropdown(['manhattan', 'euclidean', 'maximum'], value='euclidean'),
         gr.Slider(1, 500, 100, step=1),
