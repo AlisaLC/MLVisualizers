@@ -1,5 +1,5 @@
 import gradio as gr
-from SVM.plots import plot_kernel
+from SVM.plots import plot_kernel, plot_SVM
 
 demo_kernel = gr.Interface(
     fn=plot_kernel,
@@ -11,7 +11,7 @@ demo_kernel = gr.Interface(
 )
 
 demo_svm = gr.Interface(
-    fn=plot_kernel,
+    fn=plot_SVM,
     inputs=[
         gr.Slider(1, 100, 1, 1, label="C"),
         gr.Dropdown(['none', 'linear', 'quadratic', 'gaussian'], value='none'),
