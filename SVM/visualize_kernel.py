@@ -9,5 +9,3 @@ demo = gr.Interface(
         "checkbox"],
     outputs=["image"],
 )
-
-demo.launch(share=True)
