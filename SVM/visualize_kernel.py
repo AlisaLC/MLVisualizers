@@ -1,5 +1,5 @@
 import gradio as gr
-from plots import plot_kernel
+from SVM.plots import plot_kernel
 
 demo = gr.Interface(
     fn=plot_kernel,

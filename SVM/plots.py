@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.colors
-from kernels import *
-from norms import *
+from SVM.kernels import *
+from SVM.norms import *
 from utils.plot import fig2img
 from utils.data import generate_2D
 
